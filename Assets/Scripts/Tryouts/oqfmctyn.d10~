@@ -1,0 +1,78 @@
+using System.Collections;
+using System.Collections.Generic;
+using JetBrains.Annotations;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class CooldownShooting : DungeonObject
+{
+    BPM bpm;
+    [SerializeField] GameObject bullet;
+    PlayerManager player;
+
+    [SerializeField] private float Value = 0;
+    [SerializeField] [CanBeNull] private Slider progressBar;
+
+    private float maxValue = 1;
+    private float currentValue = 1;
+
+    internal float MaxValue
+    {
+        get => maxValue;
+        set
+        {
+            maxValue = value;
+
+            if (progressBar != null)
+                progressBar.maxValue = value;
+        }
+    }
+    internal float CurrentValue
+    {
+        get => currentValue;
+        set
+        {
+            currentValue = value;
+
+            if (progressBar != null)
+                progressBar.value = value;
+        }
+    }
+
+    private void Start()
+    {
+        bpm = FindObjectOfType<BPM>();
+        player = FindObjectOfType<PlayerManager>();
+        MaxValue = Value;
+        CurrentValue = Value;
+    }
+    public void Shoot()
+    {
+        if (bpm.okToShoot && Value<=0)
+        {
+            Shoot(bullet);
+        }
+        else
+        {
+            if (Value <= 0)
+            {
+                Value = maxValue;
+            }
+        }
+    }
+
+    public override void OnBeat()
+    {
+        if (Value == 0)
+        {
+            Value -= 1;
+            print(Value);
+        }
+    }
+
+    public GameObject Shoot(GameObject projectile)
+    {
+        return Instantiate(projectile, player.transform.position, Quaternion.identity);
+    }
+
+}

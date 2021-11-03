@@ -1,0 +1,58 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum ProjectileType
+{
+    Pong,
+    Squares
+}
+public class Projectile : BeatResponsive
+{
+    private Vector3 targetPos;
+    private float dir = 1;
+    [HideInInspector] public Vector3 TargetPos => targetPos * dir;
+    public ProjectileType type;
+    public float speed = 10f;
+    public float lifetime = 2f;
+
+    void Start()
+    {
+        switch (type)
+        {
+            case ProjectileType.Pong:
+                break;
+            case ProjectileType.Squares:
+                StartCoroutine(Squares());
+                break;
+        }
+    }
+    void Update()
+    {
+        if (lifetime >= 0)
+        {
+            lifetime -= Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, Camera.main.ViewportToWorldPoint(TargetPos), speed * Time.deltaTime);
+        }
+    }
+
+    public override void OnBeat()
+    {
+        if (type == ProjectileType.Pong)
+        {
+            print("Changed");
+            dir *= -1;
+        }
+
+        if (lifetime<=0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator Squares()
+    {
+        yield return null;
+    }
+}

@@ -1,0 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AutoShooting : DungeonObject
+{
+    BPM bpm;
+    PlayerManager player;
+    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject strongBullet;
+
+    private bool hasTapped;
+
+    private GameObject currentBullet;
+    void Start()
+    {
+        bpm = FindObjectOfType<BPM>();
+        player = FindObjectOfType<PlayerManager>();
+    }
+
+    public override void OnBeat()
+    {
+        hasTapped = false;
+        currentBullet = Shoot(bullet);
+    }
+
+    public void UpgradeBullet()
+    {
+        if (bpm.okToShoot)
+        {
+            if (!hasTapped)
+            {
+                hasTapped = true;
+                GameObject obj = Instantiate(strongBullet, currentBullet.transform.position, Quaternion.identity, null);
+                Destroy(currentBullet);
+                currentBullet = obj;
+            }
+        }
+    }
+
+    public GameObject Shoot(GameObject projectile)
+    {
+        return Instantiate(projectile, player.transform.position, Quaternion.identity);
+    }
+}

@@ -1,0 +1,27 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public abstract class Item : DungeonObject
+{
+    public string itemName;
+    public string itemDescription;
+
+    public int amountOwned;
+    public int beatActivated;
+
+    Weapon weapon;
+
+    private void Start()
+    {
+        weapon = FindObjectOfType<Weapon>();
+    }
+
+    public abstract void Action();
+    public override void OnBeat()
+    {
+        if (weapon != null)
+            if (weapon.succesfulShots % beatActivated == 0)
+                Action();
+    }
+}

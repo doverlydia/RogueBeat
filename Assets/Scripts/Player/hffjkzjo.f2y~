@@ -1,0 +1,75 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class AutoShooting : DungeonObject
+{
+    BPM bpm;
+    PlayerManager player;
+    [SerializeField] GameObject bullet;
+    [SerializeField] GameObject strongBullet;
+    [SerializeField] Image beatIndicator;
+
+    private GameObject currentBullet;
+
+    [SerializeField] int beatPenalty = 1;
+    [SerializeField] int beatPenaltyCounter = 0;
+    [SerializeField] bool ableToTap = true;
+    [SerializeField] bool tapped = false;
+
+    void Start()
+    {
+        bpm = FindObjectOfType<BPM>();
+        player = FindObjectOfType<PlayerManager>();
+    }
+
+    public override void OnBeat()
+    {
+        tapped = false;
+        beatIndicator.color = Color.green;
+        currentBullet = Shoot(bullet);
+
+        if (beatPenaltyCounter >= beatPenalty)
+        {
+            ableToTap = true;
+            beatPenaltyCounter = 0;
+        }
+
+        if (!ableToTap)
+        {
+            beatPenaltyCounter++;
+        }
+    }
+
+    public void UpgradeBullet()
+    {
+        if (ableToTap && !tapped)
+        {
+            if (bpm.okToShoot)
+            {
+                GameObject obj = Instantiate(strongBullet, currentBullet.transform.position, Quaternion.identity, null);
+                Destroy(currentBullet);
+                currentBullet = obj;
+                Debug.Log("Upgraded!");
+            }
+            else
+            {
+                beatIndicator.enabled = true;
+                beatIndicator.color = Color.red;
+                ableToTap = false;
+            }
+        }
+        else
+        {
+            beatIndicator.enabled = true;
+            beatIndicator.color = Color.red;
+        }
+        tapped = true;
+    }
+
+    public GameObject Shoot(GameObject projectile)
+    {
+        return Instantiate(projectile, player.transform.position, Quaternion.identity);
+    }
+}

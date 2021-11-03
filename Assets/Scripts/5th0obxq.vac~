@@ -1,0 +1,39 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ShootOnHold : MonoBehaviour
+{
+    BPM bpm;
+    [SerializeField] GameObject bullet;
+    [SerializeField] float waitTimer;
+    public float timer;
+    public bool okToShoot;
+    PlayerManager player;
+    CheckHeldDown check;
+
+    private void Start()
+    {
+        bpm = FindObjectOfType<BPM>();
+        player = FindObjectOfType<PlayerManager>();
+        timer = waitTimer;
+    }
+    private void Update()
+    {
+        Shoot();
+    }
+    public void Shoot()
+    {
+        if (check.isHeldDown && timer <= 0)
+            okToShoot = true;
+
+        if (okToShoot)
+        {
+            Instantiate(bullet, player.transform.position, Quaternion.identity);
+            okToShoot = false;
+            timer = waitTimer;
+        }
+        else
+            timer -= Time.deltaTime;
+    }
+}

@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Shooter : MonoBehaviour
+{
+    BPM bpm;
+    [SerializeField] float speed;
+    [SerializeField] GameObject bullet;
+    GameObject currentBullet = null;
+    void Start()
+    {
+        bpm = FindObjectOfType<BPM>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!bpm.okToShoot)
+        {
+            if (currentBullet == null)
+                currentBullet = Instantiate(bullet, transform.position, Quaternion.identity);
+        }
+
+        if (currentBullet != null)
+        {
+            Vector2 des = Vector2.MoveTowards(transform.position, bpm.transform.position, speed * Time.deltaTime);
+            currentBullet.transform.position = des;
+            Debug.Log("bullet: "+des);
+        }
+
+        Debug.Log("Player: "+bpm.transform.position);
+    }
+}

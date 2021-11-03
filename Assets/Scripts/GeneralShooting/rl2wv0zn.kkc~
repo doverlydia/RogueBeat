@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+public class AutoScope : MonoBehaviour
+{
+    [SerializeField] float radius;
+    Collider2D [] targets;
+    [SerializeField] LayerMask targetLayerMask;
+
+    Vector3 GetClosestTarget()
+    {
+        int t = Physics2D.OverlapCircleNonAlloc(transform.position, radius, targets, targetLayerMask);
+        if (t > 0)
+        {
+        Vector3 closestTarget = targets[0].transform.position;
+            foreach (Collider2D target in targets)
+            {
+                if (Vector2.Distance)
+                {
+
+                }
+            }
+        }
+    }
+}

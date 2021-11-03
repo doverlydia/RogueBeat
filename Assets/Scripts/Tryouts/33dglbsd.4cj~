@@ -1,0 +1,100 @@
+using System.Collections;
+using System.Collections.Generic;
+using JetBrains.Annotations;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class HardCoreWeapon : DungeonObject
+{
+    BPM bpm;
+    [SerializeField] GameObject bullet;
+    PlayerManager player;
+
+    [SerializeField] private float Value = 0;
+    [SerializeField] [CanBeNull] private Slider progressBar;
+
+    private float maxValue = 3;
+    private float currentValue = 0;
+
+    [SerializeField] Image beatIndicator;
+
+    bool tapped;
+
+
+    internal float MaxValue
+    {
+        get => maxValue;
+        set
+        {
+            maxValue = value;
+
+            if (progressBar != null)
+                progressBar.maxValue = value;
+        }
+    }
+    internal float CurrentValue
+    {
+        get => currentValue;
+        set
+        {
+            currentValue = value;
+
+            if (progressBar != null)
+                progressBar.value = value;
+        }
+    }
+
+    private void Start()
+    {
+        bpm = FindObjectOfType<BPM>();
+        player = FindObjectOfType<PlayerManager>();
+        MaxValue = Value;
+        CurrentValue = Value;
+        print("name: " + progressBar);
+    }
+
+    private void Update()
+    {
+        if(Input.GetTouch(0).tapCount == 1 && Input.GetTouch(0).phase == TouchPhase.Stationary)
+        //if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+    }
+
+    public void Shoot()
+    {
+        if (bpm.okToShoot && CurrentValue >= MaxValue && !tapped)
+        {
+            Shoot(bullet);
+        }
+        else
+        {
+            if (CurrentValue >= MaxValue)
+            {
+                CurrentValue = 0;
+            }
+
+            beatIndicator.enabled = true;
+            beatIndicator.color = Color.red;
+        }
+        tapped = true;
+    }
+
+    public override void OnBeat()
+    {
+        beatIndicator.color = Color.green;
+        tapped = false;
+
+        if (CurrentValue < MaxValue)
+        {
+            CurrentValue += 1;
+            print("cooldown on beat: " + CurrentValue);
+        }
+    }
+
+    public GameObject Shoot(GameObject projectile)
+    {
+        return Instantiate(projectile, player.transform.position, Quaternion.identity);
+    }
+}

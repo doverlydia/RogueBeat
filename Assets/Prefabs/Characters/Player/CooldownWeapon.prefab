@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &802125543819222696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7651796143482388753}
+  - component: {fileID: 3134023537017547477}
+  m_Layer: 0
+  m_Name: CooldownWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7651796143482388753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802125543819222696}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3134023537017547477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802125543819222696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e012a90053b034ea7738ae98185bde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missle: {fileID: 889757019221235699, guid: 32aa4113f190e4e42889adb8ebfafe10, type: 3}
+  bullet: {fileID: 4002956862144185154, guid: d1bc5b8410e45d34796fbd9a0fa91c13, type: 3}
+  weakBullet: {fileID: 4002956862144185154, guid: a23810065f909c943b0da6d612863262, type: 3}
+  weakMissle: {fileID: 889757019221235699, guid: efcf0677f186c5846b65a86fbfe04163, type: 3}
+  toggleScope: {fileID: 0}
+  coolDownVal: 3

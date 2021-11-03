@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Shooter : MonoBehaviour
+{
+    [SerializeField] Vector3 target;
+    [SerializeField] float speed;
+    [SerializeField] GameObject bullet;
+    BPM shoot;
+    private void Start()
+    {
+        shoot = FindObjectOfType<BPM>().okToShoot;
+    }
+
+    void Update()
+    {
+        if (shoot)
+            Instantiate(bullet, transform.position, Quaternion.identity);
+    }
+}

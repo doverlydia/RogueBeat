@@ -1,0 +1,55 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public enum EnemyLane
+{
+    First,
+    Middle,
+    Bottom
+}
+
+public enum EnemyPoint
+{
+    Left,
+    Middle,
+    Right
+}
+public class Enemy : BeatResponsive
+{
+    float speed = 10;
+    public EnemyLane enemyLane = new EnemyLane();
+    public EnemyPoint enemyPoint = new EnemyPoint();
+
+    private Vector3 Target
+    {
+        get
+        {
+            float x = 0;
+            float y = 0;
+            x = enemyPoint switch
+            {
+                EnemyPoint.Left => 0.2f,
+                EnemyPoint.Middle => 0.5f,
+                EnemyPoint.Right => 0.8f,
+                _ => x
+            };
+            y = enemyLane switch
+            {
+                EnemyLane.First => 1f,
+                EnemyLane.Middle => 0.9f,
+                EnemyLane.Bottom => 0.8f,
+                _ => y
+            };
+
+            return new Vector3(x, y, 0);
+        }
+    }
+
+    public override void OnBeat()
+    {
+        var tar = Camera.main.ViewportToWorldPoint(Target);
+        tar.z = 0;
+        transform.position = tar;
+    }
+}

@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class Shooter : MonoBehaviour
+{
+    BPM bpm;
+    [SerializeField] GameObject bullet;
+    public bool buttonPressed;
+    [SerializeField] float waitTimer;
+    float timer;
+
+    private void Start()
+    {
+        bpm = FindObjectOfType<BPM>();
+    }
+    private void Update()
+    {
+
+    }
+    public void Shoot()
+    {
+        while (buttonPressed)
+            Instantiate(bullet, transform.position, Quaternion.identity);
+    }
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        buttonPressed = true;
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        buttonPressed = false;
+    }
+}

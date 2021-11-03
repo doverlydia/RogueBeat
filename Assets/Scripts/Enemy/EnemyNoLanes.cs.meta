@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 40a0912b85668204ba0af5b43abc8536
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pongProjectile: {fileID: 1063401494722708864, guid: 61c4db8bd1da8154688e11c8829a5720, type: 3}
+  - squareProjectile: {fileID: 1063401494722708864, guid: bcdde63d8498eea44bb0cf1e59266f10, type: 3}
+  - normalProjectile: {fileID: 1063401494722708864, guid: 58abd7b61eb2fab489f82477ff17dac0, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

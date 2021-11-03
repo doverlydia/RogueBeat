@@ -1,0 +1,68 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class BPM : MonoBehaviour
+{
+    #region Properties
+    [SerializeField] float _bpm;
+    [SerializeField] float _timeToShoot;
+    [SerializeField] float _offsetTimer;
+
+    [SerializeField] AudioSource beatSound;
+    [SerializeField] AudioSource bgAudio;
+
+    private float _BpmTimer;
+    private bool _okToShoot;
+
+    public float BpmTimer { get { return _BpmTimer; } }
+    public bool okToShoot { get { return _okToShoot; } }
+    public float offsetTimer { get { return _offsetTimer; } }
+    public float bpm { get { return _bpm; } }
+    #endregion
+    //[SerializeField] Animator beatIndicator;
+    //[SerializeField] GameObject okToShoot;
+
+    private void Start()
+    {
+        _BpmTimer = BpmToSeconds();
+        StartCoroutine(Offset(_offsetTimer));
+    }
+    float BpmToSeconds()
+    {
+        return 60 / _bpm;
+    }
+
+    IEnumerator Offset(float offset)
+    {
+        yield return new WaitForSeconds(offset);
+        bgAudio.Play();
+        StartCoroutine(BPMBehaviour());
+    }
+
+    IEnumerator BPMBehaviour()
+    {
+        yield return new WaitForSeconds(_BpmTimer);
+        Debug.Log("BPM: "   +_BpmTimer);
+        StartCoroutine(OkToShoot());
+        StartCoroutine(BPMBehaviour());
+
+        if (_BpmTimer <= _timeToShoot)
+        {
+            Debug.LogError("WARNING BPM timer is smaller than time to Shoot.");
+        }
+    }
+    IEnumerator OkToShoot()
+    {
+        _okToShoot = true;
+        //beatIndicator.SetTrigger("Beat");
+        //okToShoot.SetActive(true);
+        beatSound.Play();
+        Debug.Log("Ok to Shoot");
+        yield return new WaitForSeconds(_timeToShoot);
+
+        _okToShoot = false;
+        //okToShoot.SetActive(false);
+    }
+}
