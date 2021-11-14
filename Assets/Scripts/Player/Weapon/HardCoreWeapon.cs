@@ -12,7 +12,6 @@ public class HardCoreWeapon : Weapon
     private float maxValue = 3;
     private float currentValue = 0;
 
-    [SerializeField] Image beatIndicator;
     [SerializeField] private Image movePanel;
 
     bool tapped;
@@ -66,8 +65,8 @@ public class HardCoreWeapon : Weapon
                     CurrentValue = 0;
                 }
 
-                beatIndicator.enabled = true;
-                beatIndicator.color = Color.red;
+                bpm.beatIndicator.enabled = true;
+                bpm.beatIndicator.color = Color.red;
                 succesfulShots = 0;
             }
         }
@@ -76,7 +75,7 @@ public class HardCoreWeapon : Weapon
 
     public override void OnBeat()
     {
-        beatIndicator.color = Color.green;
+        bpm.beatIndicator.color = Color.green;
         tapped = false;
 
         if (CurrentValue < MaxValue)

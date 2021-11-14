@@ -6,16 +6,17 @@ using UnityEngine.UI;
 public class PlayerManager : RoomResponsive
 {
     private Rigidbody2D rb;
-    private bool insideRoom = false;
+    //private bool insideRoom = false;
 
     internal bool isOnBossFight = false;
 
     private Touch touch;
+    private Image movePanel;
+    
     [SerializeField] private float speedModifier = 0.01f;
-    [SerializeField] private Image movePanel;
 
     private Animator anim;
-    public Weapon weapon;
+    internal Weapon weapon;
 
     private void Start()
     {
@@ -23,6 +24,7 @@ public class PlayerManager : RoomResponsive
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         weapon = GetComponentInChildren<Weapon>();
+        movePanel = GameObject.FindGameObjectWithTag("MovePanel").GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -69,17 +71,17 @@ public class PlayerManager : RoomResponsive
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, minScreenBounds.x + 1, maxScreenBounds.x - 1), Mathf.Clamp(transform.position.y, minScreenBounds.y + 1, maxScreenBounds.y - 1), transform.position.z);
     }
 
-    public override void OnRoomEnter()
-    {
-        print("im inside a room because event");
-        insideRoom = true;
-    }
+    //public override void OnRoomEnter()
+    //{
+    //    print("im inside a room because event");
+    //    insideRoom = true;
+    //}
 
-    public override void OnRoomExit()
-    {
-        print("im outside a room because event");
-        insideRoom = false;
-    }
+    //public override void OnRoomExit()
+    //{
+    //    print("im outside a room because event");
+    //    insideRoom = false;
+    //}
 
     public void OnBossFight()
     {

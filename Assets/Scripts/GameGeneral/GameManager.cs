@@ -1,21 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GameManager : DungeonObject
+public class GameManager : MonoBehaviour
 {
-    public Boss boss;
-    public PlayerManager player;
+    public Boss? boss;
+    public PlayerManager? player;
     public GameObject levelCompletedScreen;
     public GameObject levelFailedScreen;
+    public GameObject levelEssentials;
 
-    private static GameManager instance = null;
+    public static GameManager instance;
 
     // Game Instance Singleton
     public static GameManager Instance
     {
         get
         {
+            if (instance == null)
+            {
+                Debug.LogError("GameManager is null");
+            }
             return instance;
         }
     }
@@ -23,24 +29,54 @@ public class GameManager : DungeonObject
     private void Awake()
     {
         // if the singleton hasn't been initialized yet
-        if (instance != null && instance != this)
+        if (instance == null)
         {
-            Destroy(this.gameObject);
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);
         }
 
-        instance = this;
         DontDestroyOnLoad(this.gameObject);
-    }
 
-    public override void OnBeat()
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void Update()
     {
-        if (boss == null)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            levelCompletedScreen.SetActive(true);
+            if (boss == null)
+            {
+                levelCompletedScreen.SetActive(true);
+            }
+            else
+            {
+                levelCompletedScreen.SetActive(false);
+            }
+            if (player == null)
+            {
+                levelFailedScreen.SetActive(true);
+            }
+            else
+            {
+                levelFailedScreen.SetActive(false);
+            }
         }
-        if (player == null)
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0 && levelEssentials != null)
         {
-            levelFailedScreen.SetActive(true);
+            levelEssentials.SetActive(true);
+            boss = FindObjectOfType<Boss>();
+            player = FindObjectOfType<PlayerManager>();
+        }
+        else
+        {
+            if (levelEssentials != null)
+                levelEssentials.SetActive(false);
         }
     }
 }

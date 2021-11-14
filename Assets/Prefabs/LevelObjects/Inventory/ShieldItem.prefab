@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c44c6396b81d2ad4f9b20e51d8082d6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Shield
-  itemDescription: Protects From Damage
-  amountOwned: 1
-  beatActivated: 2
+  beatActivated: 1
+  itemName: Blast Shield
+  itemDescription: Blasts enemies around you
+  maxActiveTime: 3

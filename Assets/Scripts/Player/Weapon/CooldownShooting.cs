@@ -13,7 +13,6 @@ public class CooldownShooting : Weapon
     private float currentValue = 0;
 
     [SerializeField] bool tapped = false;
-    [SerializeField] Image beatIndicator;
     [SerializeField] Image movePanel;
     Touch touch;
 
@@ -60,8 +59,8 @@ public class CooldownShooting : Weapon
             if (!bpm.okToShoot)
             {
                 CurrentValue = 0;
-                beatIndicator.enabled = true;
-                beatIndicator.color = Color.red;
+                bpm.beatIndicator.enabled = true;
+                bpm.beatIndicator.color = Color.red;
                 succesfulShots = 0;
             }
         }
@@ -70,7 +69,7 @@ public class CooldownShooting : Weapon
 
     public override void OnBeat()
     {
-        beatIndicator.color = Color.green;
+        bpm.beatIndicator.color = Color.green;
         tapped = false;
 
         if (CurrentValue < MaxValue)

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Shield : Item
 {
-    public override void Action()
+    protected override void Ability()
     {
-        Debug.Log("Action!");
+        ParticleSystem part = FindObjectOfType<ParticleSystem>();
+        if (part != null)
+            part.Play();
     }
 }

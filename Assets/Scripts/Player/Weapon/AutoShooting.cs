@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class AutoShooting : Weapon
 {
     [SerializeField] GameObject strongBullet;
-    [SerializeField] Image beatIndicator;
 
     private GameObject currentBullet;
 
@@ -23,7 +22,7 @@ public class AutoShooting : Weapon
     public override void OnBeat()
     {
         tapped = false;
-        beatIndicator.color = Color.green;
+        //bpm.beatIndicator.color = Color.green;
 
         currentBullet = Shoot(bullet);
 
@@ -59,8 +58,8 @@ public class AutoShooting : Weapon
                 currentBullet = obj;
                 succesfulShots = 0;
 
-                beatIndicator.enabled = true;
-                beatIndicator.color = Color.red;
+                bpm.beatIndicator.enabled = true;
+                //bpm.beatIndicator.color = Color.red;
                 ableToTap = false;
             }
         }
@@ -68,8 +67,8 @@ public class AutoShooting : Weapon
         {
             if (!bpm.okToShoot)
             {
-                beatIndicator.enabled = true;
-                beatIndicator.color = Color.red;
+                bpm.beatIndicator.enabled = true;
+                //bpm.beatIndicator.color = Color.red;
                 ableToTap = false;
                 succesfulShots = 0;
             }

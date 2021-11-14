@@ -1,0 +1,31 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Inventory : DungeonObject
+{
+    [SerializeField] GameManager manager;
+    PlayerManager player;
+    public List<GameObject> myItems;
+    public List<GameObject> myActiveItems;
+
+    public void AddItem(GameObject item)
+    {
+        myActiveItems.Add(item);
+    }
+    public void RemoveItem(GameObject item)
+    {
+        myActiveItems.Remove(item);
+    }
+    public override void OnBeat()
+    {
+        foreach (var item in myActiveItems)
+        {
+            Item itemScript = item.GetComponent<Item>();
+            if (GameManager.Instance.player.weapon.succesfulShots > 0 && GameManager.Instance.player.weapon.succesfulShots % itemScript.beatActivated == 0)
+            {
+                itemScript.Action();
+            }
+        }
+    }
+}

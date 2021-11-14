@@ -22,13 +22,14 @@ public class BPM : MonoBehaviour
     public float bpm { get { return _bpm; } }
     #endregion
 
-    [SerializeField] Image beatIndicator;
+    public Image beatIndicator;
 
-    private void Start()
+    private void OnEnable()
     {
         _BpmTimer = BpmToSeconds();
         StartCoroutine(Offset(_offsetTimer));
     }
+
     float BpmToSeconds()
     {
         return 60 / _bpm;
@@ -45,7 +46,7 @@ public class BPM : MonoBehaviour
             yield return null;
         }
 
-        StartCoroutine(BPMBehaviour(timePassed-offset));
+        StartCoroutine(BPMBehaviour(timePassed - offset));
     }
 
     IEnumerator BPMBehaviour(float extra)
@@ -66,7 +67,7 @@ public class BPM : MonoBehaviour
         Events.OnBeat.Invoke();
 
         StartCoroutine(OkToShoot(timePassed - BpmTimer));
-        StartCoroutine(BPMBehaviour(timePassed-BpmTimer));
+        StartCoroutine(BPMBehaviour(timePassed - BpmTimer));
 
         if (_BpmTimer <= timeToShoot)
         {
@@ -77,6 +78,7 @@ public class BPM : MonoBehaviour
     {
         //the "extra space" for shooting should be both before & after the beat
         //don't use corutines.
+
         beatIndicator.enabled = true;
         beatSound.Play();
 

@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class CalculateSpeed : MonoBehaviour
+{
+    [SerializeField] RectTransform destTrans;
+    [SerializeField] float beat = 0.52f;
+
+    Vector2 startPos;
+    Vector2 dest;
+    float speed;
+    void Start()
+    {
+        startPos = transform.position;
+        dest = destTrans.position;
+        speed = Vector2.Distance(startPos, dest)/beat;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        RectTransform.position = Vector2.Lerp(transform.position, destTrans.position, speed*Time.deltaTime);
+        if (Vector2.Distance(transform.position, destTrans.position) <= 0.1f)
+        {
+            transform.position = startPos;
+        }
+    }
+}

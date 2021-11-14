@@ -9,14 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: c62649746359f714e801a0e250a53e99
   - enabled: 1
-    path: Assets/Scenes/TryOuts/Game.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/Chosen/TriggerFinger.unity
     guid: 478cb361143be554299b78ee3cd0f678
-  - enabled: 1
-    path: Assets/Scenes/Chosen/CoolDowns.unity
-    guid: b4045fabe49c18d46b13611592fdc3e7
   - enabled: 1
     path: Assets/Scenes/Chosen/HardCore.unity
     guid: 1e58cd02249486a4d814aeb20af666d9
