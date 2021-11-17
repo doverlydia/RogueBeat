@@ -1609,7 +1609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a452b1ea63382154db7cd6999b6e7cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 10
+  Value: 5
   progressBar: {fileID: 6060152643723144607}
 --- !u!61 &5709205719153985614
 BoxCollider2D:
@@ -1835,8 +1835,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7738556634920093970, guid: eb3158021b818c54aa1d371a772f587b, type: 3}
+      propertyPath: m_Size.x
+      value: 15.08816
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738556634920093970, guid: eb3158021b818c54aa1d371a772f587b, type: 3}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738556634920093971, guid: eb3158021b818c54aa1d371a772f587b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb3158021b818c54aa1d371a772f587b, type: 3}

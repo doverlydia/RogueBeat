@@ -8,20 +8,41 @@ public class Inventory : DungeonObject
 {
     public List<GameObject> myItems;
     public List<GameObject> myActiveItems;
-    public List<Button> itemSlots;
+    public List<ItemSlot> itemSlots;
     private bool _activatedItems;
 
     private int _lastSuccefulShot = 0;
 
     private int i = 0;
+
+    public void SlotTap()
+    {
+        if (EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>().thisItem == null)
+        {
+            AddNextItem();
+        }
+        else
+        {
+            RemoveCurrentItem();
+        }
+    }
+
     public void AddNextItem()
     {
         if (i < myItems.Count)
         {
             myActiveItems.Add(myItems[i]);
+            EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>().thisItem = myItems[i];
             EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TMP_Text>().text = myItems[i].GetComponent<Item>().name;
             i++;
         }
+    }
+    public void RemoveCurrentItem()
+    {
+        myActiveItems.Remove(EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>().thisItem);
+        EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>().thisItem = null;
+        EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TMP_Text>().text = "Item Slot";
+        i--;
     }
     public void AddItem(GameObject item)
     {

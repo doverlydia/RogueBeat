@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     public GameObject levelCompletedScreen;
     public GameObject levelFailedScreen;
     public GameObject levelEssentials;
+
+    public int difficulty = 1;
 
     public static GameManager instance;
 

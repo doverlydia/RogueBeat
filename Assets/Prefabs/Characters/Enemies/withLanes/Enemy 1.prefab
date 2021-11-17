@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a452b1ea63382154db7cd6999b6e7cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 10
+  Value: 15
   progressBar: {fileID: 4908047924216703137}
 --- !u!50 &7242330414797977370
 Rigidbody2D:
