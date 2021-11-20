@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public Button thisButton;
-    public GameObject thisItem;
+    public Item thisItem;
 
     void Start()
     {

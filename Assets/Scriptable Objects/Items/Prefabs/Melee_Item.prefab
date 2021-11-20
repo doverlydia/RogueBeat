@@ -15,13 +15,21 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: 20d697b94716f7f4385314a9f7d00409, type: 2}
+    - target: {fileID: 3069765388167925005, guid: fd8b10bea0799f248a7212261d8126bb, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3069765388167925005, guid: fd8b10bea0799f248a7212261d8126bb, type: 3}
+      propertyPath: itemName
+      value: Melee
+      objectReference: {fileID: 0}
     - target: {fileID: 3069765388167925006, guid: fd8b10bea0799f248a7212261d8126bb, type: 3}
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3069765388167925006, guid: fd8b10bea0799f248a7212261d8126bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3069765388167925006, guid: fd8b10bea0799f248a7212261d8126bb, type: 3}
       propertyPath: m_LocalPosition.y

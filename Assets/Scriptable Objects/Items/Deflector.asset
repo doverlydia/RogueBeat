@@ -9,11 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd3ddd988747dfa4f9564c75cdf203e8, type: 3}
-  m_Name: Shield_Deflect
+  m_Script: {fileID: 11500000, guid: 78c4f293775fe39468481493b3c029b4, type: 3}
+  m_Name: Deflector
   m_EditorClassIdentifier: 
   prefab: {fileID: 2881331172196352625, guid: adafcc2fe8998ae44a07476ef2550594, type: 3}
-  type: 1
-  description: 
-  atkBonus: 0
-  defenceBonus: 0
+  blockDamageValue: 2

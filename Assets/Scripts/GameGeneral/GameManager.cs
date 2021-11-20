@@ -3,16 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public Boss? boss;
-    public PlayerManager? player;
     public GameObject levelCompletedScreen;
+    public TMP_Text scoreText;
     public GameObject levelFailedScreen;
     public GameObject levelEssentials;
+    public Inventory inventory;
+    public GameObject shootButton;
 
-    public int difficulty = 1;
+    [HideInInspector] public Boss? boss;
+    [HideInInspector] public PlayerManager? player;
+
+    [HideInInspector] public int difficulty = 1;
+    [HideInInspector] public int overallSuccesfullShots = 0;
+    [HideInInspector] public int enemiesKilled = 0;
+    [HideInInspector] public int score = 0;
+    [HideInInspector] public int highScore = 0;
 
     public static GameManager instance;
 
@@ -52,6 +61,17 @@ public class GameManager : MonoBehaviour
         {
             if (boss == null)
             {
+                score = CalculateScore();
+                highScore = PlayerPrefs.GetInt("highScore");
+                
+                if(score > highScore)
+                    highScore = score;
+
+                PlayerPrefs.SetInt("highScore", highScore);
+                PlayerPrefs.Save();
+
+                scoreText.text = "Level Completed! Your score: " + score + " High Score: " + highScore;
+                
                 levelCompletedScreen.SetActive(true);
             }
             else
@@ -81,5 +101,22 @@ public class GameManager : MonoBehaviour
             if (levelEssentials != null)
                 levelEssentials.SetActive(false);
         }
+    }
+
+    public void Shoot()
+    {
+        if (player != null)
+        {
+            bool succesfulShot = player.weapon.Shoot();
+            if (succesfulShot)
+            {
+                overallSuccesfullShots++;
+            }
+        }
+    }
+
+    public int CalculateScore()
+    {
+        return (int)((overallSuccesfullShots * enemiesKilled) - (10 * (player.gameObject.GetComponent<Damagable>().MaxValue - player.gameObject.GetComponent<Damagable>().CurrentValue)));
     }
 }

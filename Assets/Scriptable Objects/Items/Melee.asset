@@ -13,7 +13,4 @@ MonoBehaviour:
   m_Name: Melee
   m_EditorClassIdentifier: 
   prefab: {fileID: 4930148488223742298, guid: 66ce6241c5940f548855476982c49d76, type: 3}
-  type: 1
-  description: this is a sword
-  atkBonus: 0
-  defenceBonus: 0
+  ProjectileDamage: 2

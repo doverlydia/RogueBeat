@@ -38,10 +38,12 @@ public class AutoShooting : Weapon
         }
     }
 
-    public override void Shoot()
+    public override bool Shoot()
     {
+        bool succesful = false;
+
         if (currentBullet == null)
-            return;
+            return false;
         if (ableToTap && !tapped)
         {
             if (bpm.okToShoot)
@@ -50,6 +52,7 @@ public class AutoShooting : Weapon
                 Destroy(currentBullet);
                 currentBullet = obj;
                 succesfulShots++;
+                succesful = true;
             }
             else
             {
@@ -74,6 +77,7 @@ public class AutoShooting : Weapon
             }
         }
         tapped = true;
+        return succesful;
     }
 
     public GameObject Shoot(GameObject projectile)

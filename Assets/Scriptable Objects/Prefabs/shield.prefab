@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5184555982447827988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7889477773397730391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a5ec815a4343ba43a7ddea2486d6e13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemObj: {fileID: 11400000, guid: 5d3a716320ac72341b23ea083f57d13a, type: 2}
+  beatActivated: 8
+  itemName: Shield
+  type: 0
+  itemDescription: 'prevents player from receiving any damage
+
+
+
+'
+  maxActiveTime: 1
 --- !u!1001 &427545343577292582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,5 +121,16 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2617427cd74b80041b232afe79af051c, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8561350743144581306, guid: be2c7902d9062ff459b0ef55bee738c6, type: 3}
+    - {fileID: 3737566601775203392, guid: be2c7902d9062ff459b0ef55bee738c6, type: 3}
+    - {fileID: 3888833513205228404, guid: be2c7902d9062ff459b0ef55bee738c6, type: 3}
+    - {fileID: 970375882947335248, guid: be2c7902d9062ff459b0ef55bee738c6, type: 3}
+    - {fileID: 5726235834508200464, guid: be2c7902d9062ff459b0ef55bee738c6, type: 3}
+    - {fileID: 780635762416957630, guid: be2c7902d9062ff459b0ef55bee738c6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be2c7902d9062ff459b0ef55bee738c6, type: 3}
+--- !u!1 &7889477773397730391 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7535643702543113073, guid: be2c7902d9062ff459b0ef55bee738c6, type: 3}
+  m_PrefabInstance: {fileID: 427545343577292582}
+  m_PrefabAsset: {fileID: 0}

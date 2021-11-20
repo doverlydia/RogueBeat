@@ -13,7 +13,4 @@ MonoBehaviour:
   m_Name: Homing
   m_EditorClassIdentifier: 
   prefab: {fileID: 6715186066457690295, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
-  type: 1
-  description: this is a shield
-  atkBonus: 0
-  defenceBonus: 0
+  ProjectileDamage: 1

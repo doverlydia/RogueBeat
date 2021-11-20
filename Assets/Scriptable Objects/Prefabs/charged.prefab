@@ -1,5 +1,25 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &9200992911714069036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8287525053223670897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc7d4222dda45a48af3e57f46e49a2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemObj: {fileID: 11400000, guid: e38e2dbba8db1964d9411c604492e7a3, type: 2}
+  beatActivated: 10
+  itemName: Charged
+  type: 1
+  itemDescription: "the player\u2019s taps don't make projectiles stronger instead
+    building a super charge that deals 3 damage *amount of beats charged ,in an arc
+    shape that passes through enemies (hitting each enemy in its path once)"
+  maxActiveTime: 10
 --- !u!1001 &3992533212316126507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7,6 +27,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2751132021314599573, guid: 66ce6241c5940f548855476982c49d76, type: 3}
+      propertyPath: m_TargetGraphic
+      value: 
+      objectReference: {fileID: 8287525053223670899}
     - target: {fileID: 4930148488223742296, guid: 66ce6241c5940f548855476982c49d76, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -111,5 +135,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: charged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6978860963624630677, guid: 66ce6241c5940f548855476982c49d76, type: 3}
+    - {fileID: -6804960678746384773, guid: 66ce6241c5940f548855476982c49d76, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 66ce6241c5940f548855476982c49d76, type: 3}
+--- !u!1 &8287525053223670897 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4930148488223742298, guid: 66ce6241c5940f548855476982c49d76, type: 3}
+  m_PrefabInstance: {fileID: 3992533212316126507}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8287525053223670899 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4930148488223742296, guid: 66ce6241c5940f548855476982c49d76, type: 3}
+  m_PrefabInstance: {fileID: 3992533212316126507}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8287525053223670897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

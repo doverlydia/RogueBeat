@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum ItemType
+{
+    Shield,
+    Projectile
+}
 
 public abstract class Item : DungeonObject
 {
+    public ItemObject itemObj;
+
     public int beatActivated;
     
-    [SerializeField] private string itemName;
+    public string itemName;
+    public ItemType type;
+    [TextArea(15, 20)]
     [SerializeField] private string itemDescription;
     [SerializeField] private int maxActiveTime;
     

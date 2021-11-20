@@ -6,20 +6,26 @@ using UnityEngine.EventSystems;
 using TMPro;
 public class Inventory : DungeonObject
 {
-    public List<GameObject> myItems;
-    public List<GameObject> myActiveItems;
-    public List<ItemSlot> itemSlots;
-    private bool _activatedItems;
+    public List<Item> myActiveItems;
 
+    private GameObject InventoryScreen;
     private int _lastSuccefulShot = 0;
 
-    private int i = 0;
+    [HideInInspector] public ItemSlot currentSlot;
 
+    private void Start()
+    {
+        InventoryScreen = FindObjectOfType<_displayInventory>().gameObject;
+        InventoryScreen.GetComponent<_displayInventory>().inventory.Load();
+        InventoryScreen.SetActive(false);
+    }
     public void SlotTap()
     {
-        if (EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>().thisItem == null)
+        currentSlot = EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>();
+
+        if (currentSlot.thisItem == null)
         {
-            AddNextItem();
+            InventoryScreen.SetActive(true);
         }
         else
         {
@@ -27,28 +33,27 @@ public class Inventory : DungeonObject
         }
     }
 
-    public void AddNextItem()
+    public void SelectItem()
     {
-        if (i < myItems.Count)
-        {
-            myActiveItems.Add(myItems[i]);
-            EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>().thisItem = myItems[i];
-            EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TMP_Text>().text = myItems[i].GetComponent<Item>().name;
-            i++;
-        }
+        Item item = EventSystem.current.currentSelectedGameObject.GetComponent<Item>().itemObj.prefab.GetComponent<Item>(); //getting a reference to the prefab in the project, not the one in the scene which is destroyed when changing scenes.
+        GameManager.Instance.inventory.AddItem(item);
+        GameManager.Instance.inventory.currentSlot.thisItem = item;
+        GameManager.Instance.inventory.currentSlot.thisButton.GetComponentInChildren<TMP_Text>().text = item.itemName;
+        GameManager.Instance.inventory.currentSlot = null;
+        
+        FindObjectOfType<_displayInventory>().gameObject.SetActive(false);
     }
     public void RemoveCurrentItem()
     {
         myActiveItems.Remove(EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>().thisItem);
-        EventSystem.current.currentSelectedGameObject.GetComponent<ItemSlot>().thisItem = null;
-        EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TMP_Text>().text = "Item Slot";
-        i--;
+        currentSlot.thisItem = null;
+        currentSlot.thisButton.GetComponentInChildren<TMP_Text>().text = "Item Slot";
     }
-    public void AddItem(GameObject item)
+    public void AddItem(Item item)
     {
         myActiveItems.Add(item);
     }
-    public void RemoveItem(GameObject item)
+    public void RemoveItem(Item item)
     {
         myActiveItems.Remove(item);
     }
@@ -56,14 +61,13 @@ public class Inventory : DungeonObject
     {
         foreach (var item in myActiveItems)
         {
-            Item itemScript = item.GetComponent<Item>();
             int sucShots = GameManager.Instance.player.weapon.succesfulShots;
-            if (sucShots > _lastSuccefulShot && sucShots % itemScript.beatActivated == 0)
+            if (sucShots > _lastSuccefulShot && sucShots % item.beatActivated == 0)
             {
                 _lastSuccefulShot = sucShots;
 
-                if (itemScript.actionEnabled == false)
-                    itemScript.actionEnabled = true;
+                if (item.actionEnabled == false)
+                    item.actionEnabled = true;
             }
         }
     }

@@ -1,5 +1,28 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-6978860963624630677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930148488223742298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 872fc49a48ddd714cbf51d2465c8630d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  beatActivated: 20
+  itemName: Melee
+  type: 1
+  itemDescription: 'the player''s projectiles become half a circle that does 4 damage
+    but has a very limited range.
+
+
+
+'
+  maxActiveTime: 10
+  itemObj: {fileID: 11400000, guid: 20d697b94716f7f4385314a9f7d00409, type: 2}
 --- !u!1001 &1719364902800277265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,3 +136,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c85b1bc95a045cb4ea6462e1aaf9ab3e, type: 3}
+--- !u!1 &4930148488223742298 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6032306345639568971, guid: c85b1bc95a045cb4ea6462e1aaf9ab3e, type: 3}
+  m_PrefabInstance: {fileID: 1719364902800277265}
+  m_PrefabAsset: {fileID: 0}

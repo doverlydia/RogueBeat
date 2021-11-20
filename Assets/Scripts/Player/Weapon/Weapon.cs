@@ -15,5 +15,5 @@ public abstract class Weapon : DungeonObject
         bpm = FindObjectOfType<BPM>();
         player = FindObjectOfType<PlayerManager>();
     }
-    public abstract void Shoot();
+    public abstract bool Shoot();
 }

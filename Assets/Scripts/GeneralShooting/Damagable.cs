@@ -15,6 +15,10 @@ public class Damagable : Progressable
     {
         if (CurrentValue <= 0)
         {
+            if(this.gameObject.layer == 6)
+            {
+                GameManager.Instance.enemiesKilled++;
+            }
             Destroy(this.gameObject);
         }
     }

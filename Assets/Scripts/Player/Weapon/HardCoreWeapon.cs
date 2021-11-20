@@ -49,12 +49,14 @@ public class HardCoreWeapon : Weapon
         print("name: " + progressBar);
     }
 
-    public override void Shoot()
+    public override bool Shoot()
     {
+        bool succesful = false;
         if (bpm.okToShoot && CurrentValue >= MaxValue && !tapped)
         {
             Shoot(bullet);
             succesfulShots++;
+            succesful = true;
         }
         else
         {
@@ -71,6 +73,7 @@ public class HardCoreWeapon : Weapon
             }
         }
         tapped = true;
+        return succesful;
     }
 
     public override void OnBeat()

@@ -43,4 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfbea20bf040d5f4eb3c879686b69cfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
+  myItems: []
+  myActiveItems: []
+  itemSlots: []
+  InventoryScreen: {fileID: 0}

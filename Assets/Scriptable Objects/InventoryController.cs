@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class _player : MonoBehaviour
+public class InventoryController : MonoBehaviour
 {
     public InventoryObject inventory;
 
@@ -12,19 +12,9 @@ public class _player : MonoBehaviour
         if (_item != null)
         {
             inventory.AddItem(_item.item, 1);
-        }
-        Destroy(collision.gameObject);
-    }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.KeypadEnter))
-        {
-            inventory.Load();
-        }
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
             inventory.Save();
         }
+        Destroy(collision.gameObject);
     }
     private void OnApplicationQuit()
     {

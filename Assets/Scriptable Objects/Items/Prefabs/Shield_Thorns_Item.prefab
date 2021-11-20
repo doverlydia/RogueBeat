@@ -10,7 +10,11 @@ PrefabInstance:
     - target: {fileID: 7484966446278726884, guid: 5adceefd75214e949809fed265d78952, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 72acb4e61c157e748b8034cb756c00d6, type: 2}
+      objectReference: {fileID: 11400000, guid: 631e61f54e63556438ab778a89ab9d15, type: 2}
+    - target: {fileID: 7484966446278726884, guid: 5adceefd75214e949809fed265d78952, type: 3}
+      propertyPath: itemName
+      value: Thorns Shield
+      objectReference: {fileID: 0}
     - target: {fileID: 7484966446278726886, guid: 5adceefd75214e949809fed265d78952, type: 3}
       propertyPath: m_Name
       value: Shield_Thorns_Item
@@ -21,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7484966446278726887, guid: 5adceefd75214e949809fed265d78952, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7484966446278726887, guid: 5adceefd75214e949809fed265d78952, type: 3}
       propertyPath: m_LocalPosition.y

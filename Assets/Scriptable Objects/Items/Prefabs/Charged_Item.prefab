@@ -15,6 +15,10 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: e38e2dbba8db1964d9411c604492e7a3, type: 2}
+    - target: {fileID: 8083470088832350116, guid: 629bdddb9c9632f47aa2fd5d3974aa87, type: 3}
+      propertyPath: itemName
+      value: Chraged
+      objectReference: {fileID: 0}
     - target: {fileID: 8083470088832350118, guid: 629bdddb9c9632f47aa2fd5d3974aa87, type: 3}
       propertyPath: m_Name
       value: Charged_Item
@@ -25,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8083470088832350119, guid: 629bdddb9c9632f47aa2fd5d3974aa87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8083470088832350119, guid: 629bdddb9c9632f47aa2fd5d3974aa87, type: 3}
       propertyPath: m_LocalPosition.y

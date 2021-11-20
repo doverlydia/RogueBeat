@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1258600775419842868, guid: c053ba7197ba0334ba8ae5e214316661, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.43
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1258600775419842868, guid: c053ba7197ba0334ba8ae5e214316661, type: 3}
       propertyPath: m_LocalPosition.y
@@ -59,6 +59,18 @@ PrefabInstance:
       propertyPath: item
       value: 
       objectReference: {fileID: 11400000, guid: a223ff9e5b4978045baf7feca4b182b1, type: 2}
+    - target: {fileID: 1258600775419842871, guid: c053ba7197ba0334ba8ae5e214316661, type: 3}
+      propertyPath: type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258600775419842871, guid: c053ba7197ba0334ba8ae5e214316661, type: 3}
+      propertyPath: itemName
+      value: Homing
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258600775419842871, guid: c053ba7197ba0334ba8ae5e214316661, type: 3}
+      propertyPath: beatActivated
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1258600775746566644, guid: c053ba7197ba0334ba8ae5e214316661, type: 3}
       propertyPath: m_Sprite
       value: 

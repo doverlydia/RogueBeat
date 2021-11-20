@@ -47,11 +47,14 @@ public class CooldownShooting : Weapon
         CurrentValue = Value;
         print("name: " + progressBar);
     }
-    public override void Shoot()
+    public override bool Shoot()
     {
+        bool succesful = false;
+
         if (bpm.okToShoot && !tapped && CurrentValue >= MaxValue)
         {
             Shoot(bullet);
+            succesful = true;
             succesfulShots++;
         }
         else
@@ -65,6 +68,7 @@ public class CooldownShooting : Weapon
             }
         }
         tapped = true;
+        return succesful;
     }
 
     public override void OnBeat()

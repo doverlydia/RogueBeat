@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &8483939756210966880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881331172196352625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15c1a57191cd8748a4c36bbbdef14db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemObj: {fileID: 11400000, guid: d03ad7e9ca773dc4d8aa22e03c560427, type: 2}
+  beatActivated: 3
+  itemName: Deflector
+  type: 0
+  itemDescription: 'prevents player from receiving any damage and defects enemy projectile
+    and oncontact makes those projectiles fly upwards and damage enemies in their
+    path (1 damage)
+
+
+
+'
+  maxActiveTime: 3
 --- !u!1001 &8848914975945327302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -99,5 +123,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: shield_deflect
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4860185574432576380, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
+    - {fileID: 8851107106097041878, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
+    - {fileID: 4095365918971809686, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
+    - {fileID: 4573333079413023608, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
+--- !u!1 &2881331172196352625 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6715186066457690295, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
+  m_PrefabInstance: {fileID: 8848914975945327302}
+  m_PrefabAsset: {fileID: 0}
