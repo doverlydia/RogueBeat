@@ -63,15 +63,15 @@ public class GameManager : MonoBehaviour
             {
                 score = CalculateScore();
                 highScore = PlayerPrefs.GetInt("highScore");
-                
-                if(score > highScore)
+
+                if (score > highScore)
                     highScore = score;
 
                 PlayerPrefs.SetInt("highScore", highScore);
                 PlayerPrefs.Save();
 
                 scoreText.text = "Level Completed! Your score: " + score + " High Score: " + highScore;
-                
+
                 levelCompletedScreen.SetActive(true);
             }
             else
@@ -99,7 +99,19 @@ public class GameManager : MonoBehaviour
         else
         {
             if (levelEssentials != null)
+            {
                 levelEssentials.SetActive(false);
+            }
+
+            if (inventory.InventoryScreen != null)
+            {
+                inventory.InventoryScreen.SetActive(false);
+            }
+            else
+            {
+                if (FindObjectOfType<_displayInventory>())
+                    inventory.InventoryScreen = FindObjectOfType<_displayInventory>().gameObject;
+            }
         }
     }
 

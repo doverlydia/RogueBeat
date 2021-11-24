@@ -20,6 +20,9 @@ MonoBehaviour:
     building a super charge that deals 3 damage *amount of beats charged ,in an arc
     shape that passes through enemies (hitting each enemy in its path once)"
   maxActiveTime: 10
+  overideProjectile: 0
+  overideSpecialAbility: 1
+  chragedAttack: {fileID: 0}
 --- !u!1001 &3992533212316126507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -113,11 +116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4930148488223742297, guid: 66ce6241c5940f548855476982c49d76, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4930148488223742297, guid: 66ce6241c5940f548855476982c49d76, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4930148488223742297, guid: 66ce6241c5940f548855476982c49d76, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

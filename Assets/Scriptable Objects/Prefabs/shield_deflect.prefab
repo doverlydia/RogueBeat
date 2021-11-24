@@ -24,6 +24,8 @@ MonoBehaviour:
 
 '
   maxActiveTime: 3
+  overideProjectile: 0
+  overideSpecialAbility: 0
 --- !u!1001 &8848914975945327302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,11 +99,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6715186066457690292, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 193
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6715186066457690292, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 326
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6715186066457690292, guid: db17518a32a4d85498825e9d6e1f5226, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

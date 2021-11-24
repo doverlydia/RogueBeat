@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Chosen/TriggerFinger.unity
     guid: 478cb361143be554299b78ee3cd0f678
-  - enabled: 1
-    path: Assets/Scenes/Chosen/HardCore.unity
-    guid: 1e58cd02249486a4d814aeb20af666d9
   m_configObjects: {}

@@ -2,29 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class AutoShooting : Weapon
 {
     [SerializeField] GameObject strongBullet;
-
-    private GameObject currentBullet;
 
     [SerializeField] int beatPenalty = 1;
     [SerializeField] int beatPenaltyCounter = 0;
     [SerializeField] bool ableToTap = true;
     [SerializeField] bool tapped = false;
 
-    [SerializeField] Image movePanel;
-    Touch touch;
+    public GameObject bulletToShoot;
 
+    bool ovverideShootByItem = false;
+    bool ovverideSpecialShootByItem = false;
 
 
     public override void OnBeat()
     {
+        ovverideShootByItem = GameManager.instance.inventory.myActiveItems.Where(item => (item.overideProjectile  == true && item.actionEnabled == true)).Count() > 0;
+        ovverideSpecialShootByItem = GameManager.instance.inventory.myActiveItems.Where(item => (item.overideSpecialAbility == true && item.actionEnabled == true)).Count() > 0;
+        
         tapped = false;
-        //bpm.beatIndicator.color = Color.green;
 
-        currentBullet = Shoot(bullet);
+        if (!ovverideShootByItem)
+            currentBullet = Shoot(bullet);
 
         if (beatPenaltyCounter >= beatPenalty)
         {
@@ -48,22 +51,24 @@ public class AutoShooting : Weapon
         {
             if (bpm.okToShoot)
             {
-                GameObject obj = Instantiate(strongBullet, currentBullet.transform.position, Quaternion.identity, null);
-                Destroy(currentBullet);
-                currentBullet = obj;
+                SpecialAbility();
+
                 succesfulShots++;
                 succesful = true;
             }
             else
             {
-                GameObject obj = Instantiate(bullet, currentBullet.transform.position, Quaternion.identity, null);
+                bulletToShoot = bullet;
+                succesfulShots = 0;
+                bpm.beatIndicator.enabled = true;
+                ableToTap = false;
+            }
+            if (!ovverideSpecialShootByItem)
+            {
+                GameObject obj = Instantiate(bulletToShoot, currentBullet.transform.position, Quaternion.identity, null);
                 Destroy(currentBullet);
                 currentBullet = obj;
-                succesfulShots = 0;
 
-                bpm.beatIndicator.enabled = true;
-                //bpm.beatIndicator.color = Color.red;
-                ableToTap = false;
             }
         }
         else
@@ -71,15 +76,18 @@ public class AutoShooting : Weapon
             if (!bpm.okToShoot)
             {
                 bpm.beatIndicator.enabled = true;
-                //bpm.beatIndicator.color = Color.red;
                 ableToTap = false;
                 succesfulShots = 0;
             }
         }
+
         tapped = true;
         return succesful;
     }
-
+    public void SpecialAbility()
+    {
+        bulletToShoot = strongBullet;
+    }
     public GameObject Shoot(GameObject projectile)
     {
         return Instantiate(projectile, player.transform.position, Quaternion.identity);

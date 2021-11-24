@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 872fc49a48ddd714cbf51d2465c8630d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemObj: {fileID: 11400000, guid: 20d697b94716f7f4385314a9f7d00409, type: 2}
   beatActivated: 20
   itemName: Melee
   type: 1
@@ -22,7 +23,9 @@ MonoBehaviour:
 
 '
   maxActiveTime: 10
-  itemObj: {fileID: 11400000, guid: 20d697b94716f7f4385314a9f7d00409, type: 2}
+  overideProjectile: 1
+  overideSpecialAbility: 1
+  meleeAttack: {fileID: 0}
 --- !u!1001 &1719364902800277265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,11 +99,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6032306345639568968, guid: c85b1bc95a045cb4ea6462e1aaf9ab3e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6032306345639568968, guid: c85b1bc95a045cb4ea6462e1aaf9ab3e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6032306345639568968, guid: c85b1bc95a045cb4ea6462e1aaf9ab3e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

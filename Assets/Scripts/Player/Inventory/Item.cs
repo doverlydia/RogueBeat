@@ -9,16 +9,19 @@ public enum ItemType
 
 public abstract class Item : DungeonObject
 {
+    protected PlayerManager player;
     public ItemObject itemObj;
 
     public int beatActivated;
-    
     public string itemName;
     public ItemType type;
     [TextArea(15, 20)]
     [SerializeField] private string itemDescription;
     [SerializeField] private int maxActiveTime;
-    
+
+    public bool overideProjectile = false;
+    public bool overideSpecialAbility = false;
+
     private bool _actionEnabled = false;
     private int _timeActive;
     public bool actionEnabled
@@ -36,8 +39,11 @@ public abstract class Item : DungeonObject
             }
         }
     }
-
-    private void Action()
+    private void Start()
+    {
+        player = GameManager.Instance.player;
+    }
+    public void Action()
     {
         _timeActive++;
 

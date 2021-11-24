@@ -7,17 +7,27 @@ using TMPro;
 public class Inventory : DungeonObject
 {
     public List<Item> myActiveItems;
-
-    private GameObject InventoryScreen;
+    public GameObject _inventoryScreen;
+    public GameObject InventoryScreen
+    {
+        get => _inventoryScreen;
+        set
+        {
+            _inventoryScreen = value;
+            InventoryScreen.GetComponent<_displayInventory>().inventory.Load();
+            _inventoryScreen.SetActive(false);
+        }
+    }
     private int _lastSuccefulShot = 0;
 
     [HideInInspector] public ItemSlot currentSlot;
 
     private void Start()
     {
-        InventoryScreen = FindObjectOfType<_displayInventory>().gameObject;
-        InventoryScreen.GetComponent<_displayInventory>().inventory.Load();
-        InventoryScreen.SetActive(false);
+        if (InventoryScreen == null)
+        {
+            InventoryScreen = FindObjectOfType<_displayInventory>().gameObject;
+        }
     }
     public void SlotTap()
     {
@@ -40,7 +50,7 @@ public class Inventory : DungeonObject
         GameManager.Instance.inventory.currentSlot.thisItem = item;
         GameManager.Instance.inventory.currentSlot.thisButton.GetComponentInChildren<TMP_Text>().text = item.itemName;
         GameManager.Instance.inventory.currentSlot = null;
-        
+
         FindObjectOfType<_displayInventory>().gameObject.SetActive(false);
     }
     public void RemoveCurrentItem()
@@ -59,13 +69,19 @@ public class Inventory : DungeonObject
     }
     public override void OnBeat()
     {
+        if(GameManager.Instance.player.weapon.succesfulShots == 0)
+        {
+            _lastSuccefulShot = 0;
+        }
+
         foreach (var item in myActiveItems)
         {
             int sucShots = GameManager.Instance.player.weapon.succesfulShots;
             if (sucShots > _lastSuccefulShot && sucShots % item.beatActivated == 0)
             {
                 _lastSuccefulShot = sucShots;
-
+                if (item.actionEnabled)
+                    item.Action();
                 if (item.actionEnabled == false)
                     item.actionEnabled = true;
             }

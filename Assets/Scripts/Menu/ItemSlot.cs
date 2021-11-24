@@ -11,5 +11,6 @@ public class ItemSlot : MonoBehaviour
     void Start()
     {
         thisButton = GetComponent<Button>();
+        thisButton.onClick.AddListener(GameManager.Instance.inventory.SlotTap);
     }
 }

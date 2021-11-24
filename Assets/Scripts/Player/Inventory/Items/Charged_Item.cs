@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Charged_Item : Item
 {
+    [SerializeField] GameObject chragedAttack;
     protected override void Ability()
     {
-        print(name + "Abilty Activated!");
+        Instantiate(chragedAttack, player.transform.position, Quaternion.identity, null);
     }
 }

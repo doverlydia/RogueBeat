@@ -19,6 +19,9 @@ MonoBehaviour:
   itemDescription: "fires 2 homing projectiles that home in on enemies and deal 1
     damage each \r"
   maxActiveTime: 1
+  overideProjectile: 0
+  overideSpecialAbility: 0
+  homingProjectile: {fileID: 889757019221235699, guid: 32aa4113f190e4e42889adb8ebfafe10, type: 3}
 --- !u!1001 &3328747291406308550
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,11 +99,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8287525053223670898, guid: 90bd9cf591662714292977f45641b781, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8287525053223670898, guid: 90bd9cf591662714292977f45641b781, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8287525053223670898, guid: 90bd9cf591662714292977f45641b781, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

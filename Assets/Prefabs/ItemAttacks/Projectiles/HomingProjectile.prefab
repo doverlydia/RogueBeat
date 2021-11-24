@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7846106944951370450}
   - component: {fileID: 9108087018291457185}
   m_Layer: 0
-  m_Name: PlayerMissle
+  m_Name: HomingProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 5
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.9601507, g: 0, b: 1, a: 1}
   m_FlipX: 0
@@ -97,11 +97,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  radius: 0.5
+  radius: 1
   whatIdamage:
     serializedVersion: 2
     m_Bits: 64
   notProjectile: 0
-  targetPos: {x: 0, y: 0, z: 0}
-  speed: 10
-  lifetime: 2
+  targetPos: {x: 0, y: 0}
+  speed: 5
+  lifetime: 10

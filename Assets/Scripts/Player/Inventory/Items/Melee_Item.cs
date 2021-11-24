@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Melee_Item : Item
 {
+    [SerializeField] GameObject meleeAttack;
     protected override void Ability()
     {
-        print(name + "Abilty Activated!");
+            Instantiate(meleeAttack, player.transform.position, Quaternion.identity, null);
     }
 }
