@@ -13,4 +13,12 @@ public class Menu : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+    public void ActivateGameObject(GameObject gameObject)
+    {
+        gameObject.SetActive(true);
+    }
+    public void DeactivateGameObject(GameObject gameObject)
+    {
+        gameObject.SetActive(false);
+    }
 }

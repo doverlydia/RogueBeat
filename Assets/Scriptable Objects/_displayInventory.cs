@@ -11,6 +11,7 @@ public class _displayInventory : MonoBehaviour
     public float y_space_between_items;
     public int number_of_column;
     Dictionary<InventorySlot, GameObject> itemsDisplayed = new Dictionary<InventorySlot, GameObject>();
+    [SerializeField] GameObject noItemsMessage;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class _displayInventory : MonoBehaviour
     void Update()
     {
         UpdateDisplay();
+        noItemsMessage.SetActive(itemsDisplayed.Count<=0);
     }
     private void CreateDisplay()
     {
