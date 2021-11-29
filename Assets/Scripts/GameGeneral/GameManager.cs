@@ -14,6 +14,12 @@ public class GameManager : MonoBehaviour
     public Inventory inventory;
     public GameObject shootButton;
 
+    public List<GameObject> AllIems;
+    public GameObject PortalPrefab;
+    private GameObject[] ItemSpawnPoints;
+    private GameObject portalSpawnPoint;
+    private bool _instantiated;
+
     [HideInInspector] public Boss? boss;
     [HideInInspector] public PlayerManager? player;
 
@@ -72,7 +78,9 @@ public class GameManager : MonoBehaviour
 
                 scoreText.text = "Level Completed! Your score: " + score + " High Score: " + highScore;
 
-                levelCompletedScreen.SetActive(true);
+                OnLevelFinished();
+                if (portalSpawnPoint.transform.childCount > 0)
+                    levelCompletedScreen.SetActive(Vector2.Distance(player.transform.position, portalSpawnPoint.transform.position) < 5);
             }
             else
             {
@@ -88,6 +96,24 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    private bool SpawnTrophies()
+    {
+        foreach (var spawnPoint in ItemSpawnPoints)
+        {
+            Instantiate(AllIems[Random.Range(0, AllIems.Count - 1)], spawnPoint.transform);
+        }
+        return true;
+    }
+    private void OnLevelFinished()
+    {
+        if (!_instantiated)
+            _instantiated = SpawnTrophies();
+
+        if (_instantiated && portalSpawnPoint.transform.childCount<=0)
+        {
+            Instantiate(PortalPrefab, portalSpawnPoint.transform);
+        }
+    }
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (SceneManager.GetActiveScene().buildIndex != 0 && levelEssentials != null)
@@ -95,6 +121,8 @@ public class GameManager : MonoBehaviour
             levelEssentials.SetActive(true);
             boss = FindObjectOfType<Boss>();
             player = FindObjectOfType<PlayerManager>();
+            portalSpawnPoint = GameObject.FindGameObjectWithTag("Portal");
+            ItemSpawnPoints = GameObject.FindGameObjectsWithTag("ItemSpawnPoint");
         }
         else
         {

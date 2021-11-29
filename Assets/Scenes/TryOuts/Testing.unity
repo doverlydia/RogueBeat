@@ -327,7 +327,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Charged_Item
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8096110239860052009, guid: fd8b10bea0799f248a7212261d8126bb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd8b10bea0799f248a7212261d8126bb, type: 3}
 --- !u!1 &586706819
 GameObject:
@@ -477,7 +478,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shield_Thorns_Item
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4136034118424707021, guid: 16193b44c1468b140a760fde78bfba44, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 16193b44c1468b140a760fde78bfba44, type: 3}
 --- !u!1 &634999444
 GameObject:
@@ -627,7 +629,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7503208320512365614, guid: 16d044c3db7353d4098ae1395219b944, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 16d044c3db7353d4098ae1395219b944, type: 3}
 --- !u!1 &1224909512
 GameObject:
@@ -861,7 +864,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4403719262684989888, guid: 5adceefd75214e949809fed265d78952, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5adceefd75214e949809fed265d78952, type: 3}
 --- !u!1001 &1958413179
 PrefabInstance:
@@ -918,7 +922,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3093013288080108160, guid: 629bdddb9c9632f47aa2fd5d3974aa87, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 629bdddb9c9632f47aa2fd5d3974aa87, type: 3}
 --- !u!1001 &1976586637
 PrefabInstance:
@@ -975,7 +980,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee_Item
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4012478621458411555, guid: 4be900c08aaa3c949898aab28317ace9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4be900c08aaa3c949898aab28317ace9, type: 3}
 --- !u!1001 &9030807906201748579
 PrefabInstance:

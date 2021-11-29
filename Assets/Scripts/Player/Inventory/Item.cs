@@ -29,7 +29,7 @@ public abstract class Item : DungeonObject
         get => _actionEnabled;
         set
         {
-            if(value == true)
+            if (value == true)
             {
                 Action();
             }
@@ -41,7 +41,12 @@ public abstract class Item : DungeonObject
     }
     private void Start()
     {
-        player = GameManager.Instance.player;
+        if (GameManager.instance != null)
+            player = GameManager.Instance.player;
+        else
+        {
+            Debug.LogError("Game Manager is NULL");
+        }
     }
     public void Action()
     {
@@ -49,7 +54,7 @@ public abstract class Item : DungeonObject
 
         if (_timeActive >= maxActiveTime)
             actionEnabled = false;
-        
+
         Ability();
     }
 
